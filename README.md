@@ -20,6 +20,7 @@ TBA
 
 * Permit local ranges rather than 0.0.0.0
 * Reconfigure listening interfaces based on requirements.
+* Cull backups.
 
 # License
 

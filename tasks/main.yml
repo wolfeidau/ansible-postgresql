@@ -18,10 +18,9 @@
 - name: Create backups directory structure
   file: path=$item state=directory owner=postgres
   with_items:
-  - /home/discourse/pg_backups
-  - /home/discourse/pg_backups/daily
-  - /home/discourse/pg_backups/hourly
+  - /var/lib/postgresql/9.3/backups
+  - /var/lib/postgresql/9.3/backups/daily
 
 - cron: name="daily pg backup"
         hour=2 minute=50 user="postgres"
-        job='pg_dumpall | gzip > /home/discourse/pg_backups/daily/$(date "+\%Y_\%m_\%d-\%H_\%M_\%S.sql.gz")'
+        job='pg_dumpall | gzip > /var/lib/postgresql/9.3/backups/daily/$(date "+\%Y_\%m_\%d-\%H_\%M_\%S.sql.gz")'
